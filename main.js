@@ -21,28 +21,39 @@ const pokemons = [
     { id: 11, nombre: "hitmotchan", tipo: "lucha" },
 ]
 
+const filtrar = ()=> {
+    let consultaFiltrado = prompt("que tipo de pokemon quieres filtrar ejemplo: lucha-agua-roca-fuego-electrico?").toLowerCase()
+            const filtrados = pokemons.filter(pokemon => pokemon.tipo === consultaFiltrado)
+            console.log(filtrados)
+}
+
+const buscar = ()=> {
+    let consultaBusqueda = prompt("que pokemon quieres buscar?").toLowerCase()
+    const busqueda = pokemons.find(pokemon => pokemon.nombre === consultaBusqueda)
+    console.log(busqueda)
+}
+
+const agregar = ()=> {
+    while (consulta3.toLowerCase() === "si") {
+        let consulta1 = prompt("Agrega un pokemon a la lista, ingrese su nombre.")
+        let consulta2 = prompt("Escribe el tipo de pokemon que agregaste anteriormente.")
+        pokemons.push(new Pokemon(consulta1, consulta2))
+        consulta3 = prompt("desea agregar otro pokemon? ingrese si ,sino, salir")
+        console.log(pokemons)
+    }
+}
 let consultaPrincipal = prompt("Que quieres hacer? Si quieres agregar un pokemon pon 'agregar', si quieres filtrar pon 'filtrar', si quieres encontrar un pokemon escribe 'buscar', si quieres salir ingrese 'salir'").toLowerCase()
 let consulta3 = "si"
 while (consultaPrincipal !== "salir") {
     switch (consultaPrincipal.toLowerCase()) {
         case "agregar":
-            while (consulta3.toLowerCase() === "si") {
-                let consulta1 = prompt("Agrega un pokemon a la lista, ingrese su nombre.")
-                let consulta2 = prompt("Escribe el tipo de pokemon que agregaste anteriormente.")
-                pokemons.push(new Pokemon(consulta1, consulta2))
-                consulta3 = prompt("desea agregar otro pokemon? ingrese si ,sino, salir")
-                console.log(pokemons)
-            }
+           agregar()
             break
         case "filtrar":
-            let consultaFiltrado = prompt("que tipo de pokemon quieres filtrar ejemplo: lucha-agua-roca-fuego-electrico?").toLowerCase()
-            const filtrados = pokemons.filter(pokemon => pokemon.tipo === consultaFiltrado)
-            console.log(filtrados)
+            filtrar()
             break
         case "buscar":
-            let consultaBusqueda = prompt("que pokemon quieres buscar?").toLowerCase()
-            const busqueda = pokemons.find(pokemon => pokemon.nombre === consultaBusqueda)
-            console.log(busqueda)
+            buscar()
             break
     }
     consultaPrincipal = prompt("Que quieres hacer? Si quieres agregar un pokemon pon 'agregar', si quieres filtrar pon 'filtrar', si quieres encontrar un pokemon escribe 'buscar'").toLowerCase()
