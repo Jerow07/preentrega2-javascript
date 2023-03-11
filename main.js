@@ -58,9 +58,15 @@ while (consultaPrincipal !== "salir") {
     }
     consultaPrincipal = prompt("Que quieres hacer? Si quieres agregar un pokemon pon 'agregar', si quieres filtrar pon 'filtrar', si quieres encontrar un pokemon escribe 'buscar'").toLowerCase()
 }
+let div = document.getElementById("contenedor")
 
 
+pokemons.forEach(pokemon => { 
+    let arrayPokemon = document.createElement("div")
+    arrayPokemon.innerHTML= `<h1>Nombre de pokemon = ${pokemon.nombre}<h1/>` 
 
+div.append(arrayPokemon)
+});
 
 
 
